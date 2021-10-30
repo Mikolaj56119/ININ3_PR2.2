@@ -1,11 +1,15 @@
 package com.company;
 
-public class Device{
-    public String producer;
-    public String model;
-    public String yearOfProduction;
+public abstract class Device{
+    final String producer;
+    final String model;
+    final Integer yearOfProduction;
 
-    public Device(String yearOfProduction) {
+    public Device(Double yearOfProduction) {
+        this.producer = producer;
+        this.model = model;
         this.yearOfProduction = yearOfProduction;
     }
+
+    abstract public void turnON();
 }

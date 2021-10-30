@@ -13,4 +13,9 @@ public class Car extends Device {
         this.engineCapacity = engineCapacity;
         this.engineSound = engineSound;
     }
+
+    @Override
+    public void turnOn(){
+        System.out.println("przekręcam kluczyk");
+    }
 }
