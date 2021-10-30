@@ -6,3 +6,5 @@ public class Animal {
     Integer age;
     Boolean alive;
 }
+
+
