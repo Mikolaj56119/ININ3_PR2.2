@@ -4,44 +4,54 @@ import com.company.Devices.Device;
 import com.company.Human;
 import com.company.Saleable;
 
-public abstract class Car extends Device implements Saleable {
+public class Car extends Device implements Saleable {
+    public Double value;
     Double weight;
     Integer doors;
-    Double value;
 
     public Car(String model, String producer, Integer yearOfProduction) {
         super(yearOfProduction, producer, model);
     }
+
     public Double getWeight() {
         return weight;
     }
+
     public String getModel() {
         return model;
     }
+
     public String getProducer() {
         return producer;
     }
+
     public void setWeight(Double weight) {
         this.weight = weight;
     }
+
     public Integer getDoors() {
         return doors;
     }
+
     public void setDoors(Integer doors) {
         this.doors = doors;
     }
+
     public Double getValue() {
         return value;
     }
+
     public void setValue(Double value) {
         this.value = value;
     }
+
     public int hashCode() {
         double result = 31 * 7 * model.hashCode() *
                 producer.hashCode() *
                 weight * doors * value;
         return (int) result;
     }
+
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -68,8 +78,18 @@ public abstract class Car extends Device implements Saleable {
                 '}';
     }
 
+    @Override
+    protected boolean isLastOwner(Human seller) {
+        return false;
+    }
+
     public void turnOn() {
         System.out.println("Przekrecam kluczyk");
+    }
+
+    @Override
+    public Object showCar() {
+        return null;
     }
 
 
@@ -85,20 +105,30 @@ public abstract class Car extends Device implements Saleable {
 
     @Override
     public void sale(Human seller, Human buyer, Double price) {
-        System.out.println("Próba sprzedania samochodu " + this.producer);
-        if (seller.car != this) {
-            System.out.println("Sprzedawca nie ma samochidu");
-        } else if (buyer.cash < price) {
-            System.out.println("Sorry, kupujący ma za mało pieniędzy");
-        } else {
-            seller.cash += price;
+        System.out.println("Proba sprzedania samochodu "+ this.producer);
+        if(!seller.hasCar(this)){
+            System.out.println("Sprzedawca nie ma samochodu");
+        }else if(!buyer.hasFreeParkingLot()){
+            System.out.println("Kupujacy nie ma miejsca na samochod");
+        } else if(!this.isLastOwner(seller)) {
+            System.out.println("Sprzedajacy nie jest ostatnim wlascicielem auta");
+        }else if (buyer.cash <price){
+            System.out.println("Soryy kupujacy nie ma kasy");
+        }else{
+            seller.cash +=price;
             buyer.cash -= price;
-            seller.car = null;
-            buyer.car = this;
-            System.out.println("Samochód " + this.producer + " został sprzedany za " + price);
-
+            seller.removeCar(this);
+            buyer.addCar(this);
+            this.owners.add((CharSequence) buyer);
+            System.out.println("Samochod "+ this.producer + " zostal sprzedany za "+ price);
         }
+
     }
 
-    public abstract void refuel();
+
+
+    public void refuel() {
+
+    }
 }
+
