@@ -1,13 +1,29 @@
 package com.company.Animals;
 
-public class Pet extends Animals implements Edbile {
+import com.company.Animal;
 
-    public Pet(String species) {
-        super(species);
+public class Pet extends Animal {
+    String species = "dog";
+    private Double weight;
+    public Pet() {super(species);}
+
+    public Pet(String species, Double weight) {super(species);}
+    @Override
+    public void feed(Double foodWeight) {
     }
 
     @Override
-    public void beEaten() {
+    public void feed(double foodWeight, String foodType) {
+
+    }
+
+    @Override
+    public void sale() {
+
+    }
+
+    @Override
+    public void getPrice() {
 
     }
 }
