@@ -25,6 +25,11 @@
             System.out.println("Włączenie telefonu");
         }
 
+        @Override
+        public Object showCar() {
+            return null;
+        }
+
 
         @Override
         public void sale(Human seller, Human buyer, Double price) {
@@ -47,6 +52,11 @@
                     ", screenSize=" + screenSize +
                     ", os='" + os + '\'' +
                     '}';
+        }
+
+        @Override
+        protected boolean isLastOwner(Human seller) {
+            return false;
         }
 
         @Override
