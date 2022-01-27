@@ -37,9 +37,6 @@ public class Human extends Animal {
         this.garage = new Car[garageSize];
     }
 
-    public Human(String ala) {
-        super();
-    }
 
     public void sale(Human seller, Human buyer, double price) {
         System.out.println("NIE");
@@ -55,7 +52,7 @@ public class Human extends Animal {
         }
         else
         {
-            System.out.println("Ujemna wyplata!!");
+            System.out.println("Wypłata na minusie!");
         }
     }
     public void setCar(Car vehicle)
@@ -122,7 +119,7 @@ public class Human extends Animal {
     }
 
     public void sell(Human seller,Human buyer,Double price){
-        System.out.println("Nie mozxna sprzedawac ludzi !!!");
+        System.out.println("Handel ludźmi jest zabroniony !!!");
     }
     public boolean hasCar(Car newCar){
         for(Car car : garage){
