@@ -9,8 +9,23 @@ public class FarmAnimals extends Animal implements Edbile {
     }
 
     @Override
+    public void feed(double foodWeight, String foodType) {
+
+    }
+
+    @Override
     public void beEaten() {
         System.out.println("Będzie zjedzony!");
     }
 
+
+    @Override
+    public void sale() {
+
+    }
+
+    @Override
+    public void getPrice() {
+
+    }
 }
