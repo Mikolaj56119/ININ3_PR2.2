@@ -15,8 +15,8 @@ public class Human extends Animal {
     String firstName;
     String lastName;
     public Animal pet;
-    public Phone mobile;
     public Car[] garage;
+    public Phone mobile;
     private Double salary;
     private boolean device;
 
@@ -76,7 +76,7 @@ public class Human extends Animal {
 
     public Double getSalary(){
 
-        System.out.println("Ostatnie pobieranie danych o wypłacie: 10.09.2021. Wartość: "+ salary+ "zl");
+        System.out.println("Ostatnie pobieranie danych o wypłacie: 11.11.2021. Wartość: "+ salary+ "zl");
         return this.salary;
     }
     public void getCar()
@@ -164,5 +164,8 @@ public class Human extends Animal {
     @Override
     public void getPrice() {
 
+
     }
+
+
 }
