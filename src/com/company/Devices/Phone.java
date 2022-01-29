@@ -90,6 +90,7 @@
             }
         }
 
+
         public void installAnApp(URL url) {
             System.out.println("url: " + url);
             System.out.println("Aplikacja: " + DEFAULT_APPLICATION + " Wersja " + DEFAULT_VERSION);
