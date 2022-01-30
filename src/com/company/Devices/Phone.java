@@ -1,10 +1,16 @@
     package com.company.Devices;
 
+    import com.company.Application;
     import com.company.Human;
     import com.company.Saleable;
+    import jdk.internal.icu.impl.BMPSet;
+    import jdk.internal.icu.text.UnicodeSet;
 
     import java.net.URL;
+    import java.util.Arrays;
+    import java.util.Collections;
     import java.util.List;
+    import java.util.stream.Collectors;
 
     public class Phone extends Device implements Saleable {
         final Double screenSize;
@@ -13,6 +19,7 @@
         final static String DEFAULT_PROTOCOL = "HTTPS";
         final static String DEFAULT_VERSION = "11.15.4";
         final static String DEFAULT_APPLICATION = "INTELLIJ";
+        private Object Application;
 
         public Phone(String model,String producer,Integer yearOfProduction, Double screenSize) {
             super(yearOfProduction, producer, model);
@@ -84,17 +91,64 @@
                     " server:  " + adresServera);
         }
 
-        public void installAnApp(List<String> applicationsToInstall) {
-            for (String application : applicationsToInstall) {
+        public void installAnApp(List<String> applicationToInstall) {
+            for (String application : applicationToInstall) {
                 installAnApp(application);
             }
         }
 
 
-        public void installAnApp(URL url) {
+        public void installApp(URL url) {
             System.out.println("url: " + url);
             System.out.println("Aplikacja: " + DEFAULT_APPLICATION + " Wersja " + DEFAULT_VERSION);
         }
+        public void installApp(List<String> applicationToInstall) {
+            for (String application : applicationToInstall) {
+                installAnApp(application);
+            }
+        }
+
+        public void installAnApp(URL url) {
+            System.out.println("twoj url to: " + url);
+            System.out.println("Zainstalowana aplikacja to " + DEFAULT_APPLICATION + " w wersji " + DEFAULT_VERSION);
+        }
+
+        public void installAnAppOnPhone(Application application) {
+            if (this.phoneOwner.cash < application.price) {
+                System.out.println("Wlasciciel ma za malo pieniedzy " + application.applicationName);
+            } else {
+                this.phoneOwner.cash -= application.price;
+                System.out.println("Aplikacja zostala zainstalowana :" + application.applicationName);
+                UnicodeSet phoneApplication = null;
+                phoneApplication.add((CharSequence) application);
+            }
+        }
+
+        public void isApplicationInstalledOnPhone(Application application) {
+            BMPSet phoneApplication = null;
+            if (phoneApplication.contains((Integer) Application)){
+                System.out.println("Applikacja " + application.applicationName +" jest zainstalowana");
+            } else {
+                System.out.println("Applikacja " + application.applicationName +" nie jest zainstalowana");
+            }
+        }
 
 
+        public void getAppValue() {
+            double applicationsValue = 0;
+            Application[] phoneApplications = new Application[0];
+            for (Application application: phoneApplications) {
+                applicationsValue += application.price;
+            }
+            System.out.println("Wartosc wszystkich aplikacji " + applicationsValue);
+        }
+        public void getAllAppNamesInAlphabetic() {
+            System.out.println("Aplikacje w kolejnosci alfabetycznej to:");
+            List<? extends Object> phoneApplication = null;
+            Collections.sort(phoneApplication, new AppNameComparator());
+            for (Object application : phoneApplication) {
+                System.out.println(application.applicationName);
+            }
+
+        }
     }
